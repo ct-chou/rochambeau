@@ -106,10 +106,31 @@ function playRound(playerSelection, computerSelection) {
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            alert(button.id);
+        button.addEventListener('click', () => {
+            let playerSelection = button.id;
+            let computerSelection = getComputerChoice();
+            roundResult = playRound(playerSelection, computerSelection);
+            let printResult = 'tie';
+            if(roundResult == -1) {
+                printResult = 'loss';
+            }
+            else if(roundResult == 1) {
+                printResult = 'win';
+            }
+            else {
+                printResult = 'tie';
+            }
+            const container = document.querySelector('#container');
+            const content = document.createElement('div');
+            content.classList.add('result');
+            content.setAttribute('style', 'white-space: pre;');
+            content.textContent = `player selects: ${playerSelection} || computer selects: ${computerSelection} \r\n`
+            content.textContent += `result: ${printResult}`;
+            container.appendChild(content);
         });
 });
+
+
 
 /* 
 function game() {
