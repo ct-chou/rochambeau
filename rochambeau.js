@@ -103,7 +103,7 @@ function playGame(playerSelection, computerSelection) {
     }
 }
 
-
+/* 
 function game() {
     let draws = 0;
     let wins = 0;
@@ -146,3 +146,4 @@ function game() {
         console.log('it\'s a draw!');
     }
 }
+ */
