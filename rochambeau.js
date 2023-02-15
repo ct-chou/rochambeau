@@ -104,35 +104,44 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const buttons = document.querySelectorAll('button');
-
+let computerScore = 0;
+let yourScore = 0;
 buttons.forEach(button => {
         button.addEventListener('click', () => {
             let playerSelection = button.id;
             let computerSelection = getComputerChoice();
             roundResult = playRound(playerSelection, computerSelection);
-            let printResult = 'tie';
             if(roundResult == -1) {
                 printResult = 'loss';
+                computerScore += 1;
             }
             else if(roundResult == 1) {
                 printResult = 'win';
+                yourScore += 1;
             }
             else {
                 printResult = 'tie';
             }
+            if(computerScore == 5) {
+                winner = 'computer';
+            }
+            if(yourScore == 5) {
+                winner = 'you';
+            }
             const container = document.querySelector('#container');
-            const content = document.createElement('div');
-            content.classList.add('result');
-            content.setAttribute('style', 'white-space: pre;');
-            content.textContent = `player selects: ${playerSelection} || computer selects: ${computerSelection} \r\n`
-            content.textContent += `result: ${printResult}`;
-            container.appendChild(content);
+            container.setAttribute('style', 'white-space: pre;');
+            container.textContent = `Player selects: ${playerSelection} || Computer selects: ${computerSelection} \r\n`
+            container.textContent += `Round result: ${printResult}\r\n`;
+            container.textContent += `Total Score: you: ${yourScore}, computer: ${computerScore}`;
+            if(computerScore==5 || yourScore==5) {
+                container.textContent += `\r\nGame Over, winner: ${winner}!`;
+            }
         });
 });
 
 
 
-/* 
+ 
 function game() {
     let draws = 0;
     let wins = 0;
@@ -175,4 +184,3 @@ function game() {
         console.log('it\'s a draw!');
     }
 }
- */
