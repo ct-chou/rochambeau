@@ -64,7 +64,7 @@ function playGameOld(playerSelection, computerSelection) {
     }
 }
 
-function playGame(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     if(playerSelection == 'rock') {
         switch (computerSelection){
             case 'rock':
@@ -102,6 +102,14 @@ function playGame(playerSelection, computerSelection) {
         }
     }
 }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            alert(button.id);
+        });
+});
 
 /* 
 function game() {
