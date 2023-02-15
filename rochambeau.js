@@ -130,11 +130,14 @@ buttons.forEach(button => {
             }
             const container = document.querySelector('#container');
             container.setAttribute('style', 'white-space: pre;');
-            container.textContent = `Player selects: ${playerSelection} || Computer selects: ${computerSelection} \r\n`
+            container.textContent = `Player selects: ${playerSelection}\r\n`;
+            container.textContent += `Computer selects: ${computerSelection} \r\n`;
             container.textContent += `Round result: ${printResult}\r\n`;
             container.textContent += `Total Score: you: ${yourScore}, computer: ${computerScore}`;
             if(computerScore==5 || yourScore==5) {
                 container.textContent += `\r\nGame Over, winner: ${winner}!`;
+                yourScore = 0;
+                computerScore = 0;
             }
         });
 });
